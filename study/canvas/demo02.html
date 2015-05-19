@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 学习</title>
+
+	<style>
+		#demo{width: 400px; height: 400px;}
+	</style>
+</head>
+<body>
+	<canvas id="demo">您的浏览器不支持canvas标签</canvas>
+
+	<script>
+		var canvas = document.getElementById('demo');
+		var context = canvas.getContext('2d');
+
+		context.fillStyle='red';
+		context.save();
+		/*context.beginPath();
+		context.moveTo(10,10);
+		context.lineTo(120, 180);
+		context.lineTo(300, 180);
+		context.lineTo(300, 100);
+		context.closePath();
+		context.fill();
+		context.restore();*/
+
+		context.beginPath();
+ 		context.moveTo(10,20);
+ 		context.lineTo(50,80);
+ 		context.lineTo(200,80);
+ 		context.closePath();
+ 		context.fill();
+	</script>
+</body>
+</html>

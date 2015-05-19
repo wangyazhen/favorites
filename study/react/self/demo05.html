@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script src="js/react-v0.13.2.js"></script>
+    <script src="js/JSXTransformer-v0.13.2.js"></script>
+</head>
+<body>
+<div id="example"></div>
+
+
+<script type="text/jsx">
+    
+    var MyComponent = React.createClass({
+        handleClick: function() {
+            var dom = React.findDOMNode(this.refs.myTextInput);
+            dom.focus();
+            alert('哈哈 打中了:' + dom.value);
+        },
+        render: function() {
+            return (
+                <div>
+                <input type='text' ref='myTextInput' /><br/>
+                <input type='button' value='点我' onClick={this.handleClick}/>
+                </div>
+            )
+        }
+    });
+    React.render(
+      <MyComponent/>
+      ,document.getElementById('example')
+    );
+
+</script>
+</body>
+</html>

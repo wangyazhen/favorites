@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据加载</title>
+    <script src="js/react-v0.13.2.js"></script>
+    <script src="js/JSXTransformer-v0.13.2.js"></script>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/jsx">
+    var UserGist = React.createClass({
+        getInitialState: function(){
+            return {
+                username: 'wyz',
+                lastGistUrl: 'abc'
+            };
+        },
+        componentDidMount: function(){
+            $.get(this.props.source, function(result) {
+                var lastGist = result[0];
+                if (this.isMounted()) {
+                    this.setState({
+                        username: lastGist.owner.login,
+                        lastGistUrl: lastGist.html_url
+                    });
+                }
+            }.bind(this));
+        },
+        render: function() {
+            return (
+                <div>
+                <h1>{this.props.source}</h1>
+                {this.state.username}
+                <a href={this.state.lastGistUrl}></a>
+                </div>
+            );
+        }
+    });
+    
+    React.render(<UserGist source="https://api.github.com/users/octocat/gists"/>, document.getElementById('example'));
+</script>
+
+</body>
+</html>

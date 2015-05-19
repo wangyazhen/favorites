@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>翻屏效果</title>
+	<link rel="stylesheet" type="text/css" href="css/jquery.pagepiling.css"/>
+	<link rel="stylesheet" type="text/css" href="css/examples.css"/>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.pagepiling.min.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		#section1 {
+			background-image: url(imgs/bg1.jpg);
+		}
+		#section1 h1 {
+			color: #F2F2F2;
+		}
+		#section2 {
+			background-image: url(imgs/bg2.jpg);
+		}
+		#section3 {
+			background-image: url(imgs/bg3.jpg);
+		}
+		#section1,#section2,#section4,#section3{
+			
+			background-size: cover;
+			-webkit-background-size: cover;
+		}
+	</style>
+</head>
+<body>
+	<div id="warp">
+		<section class="section" id="section1">
+			<h1>部分一</h1>
+			<p>测试看看</p>
+		</section>
+		<section class="section" id="section2">
+			<h1>部分二的地方地方</h1>
+			<p>测试看看</p>
+		</section>
+		<section class="section" id="section3">
+			<h1>第三部分 看看</h1>
+			<p>看一看 部分四</p>
+		</section>
+	</div>
+	
+	<script type="text/javascript">
+		$(function() {
+			$('#warp').pagepiling({
+				sectionsColor: ['#bfda00', '#2ebe21', '#2c3e50', '#51bec4'],
+				navigation:　{
+					'position': 'right',
+					'tooltips': ['第一页','第二页', '第三页', '第四页']
+				}
+			});
+		});
+	</script>
+</body>
+</html>
