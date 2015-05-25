@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.container{			
+			width: 500px;
+			height: 300px;			
+			margin: auto;
+			border: 1px solid #096;
+			padding: 20px;
+		}
+		
+		.segmented-control{
+			display: table;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
+		.segmented-control > a {
+			display: table-cell;
+			width: 60px;
+			border-left: 1px solid #ddd;
+			text-decoration: none;
+			color: #000;
+			padding-top: 6px;
+			padding-bottom: 8px;
+			height: 20px;			
+			text-align: center;
+		}
+		.control-item:first-child {
+			border-left-width: 0;
+		}
+		.control-item:hover {
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="segmented-control">
+			<a href="" class="control-item">one</a>
+			<a href="" class="control-item">two</a>
+			<a href="" class="control-item">three</a>
+		</div>
+	</div>
+</body>
+</html>
