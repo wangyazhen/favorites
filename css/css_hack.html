@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.container{
+			width: 500px;
+			height: 300px;
+			margin: auto;
+			border: 1px solid #096;
+			padding: 20px;
+
+            background-color: #CC00FF;        /*所有浏览器都会显示为紫色*/
+
+            background-color: #FF0000\9;    /*IE6、IE7、IE8会显示红色*/
+
+            *background-color: #0066FF;        /*IE6、IE7会变为蓝色*/
+
+            _background-color: #009933;        /*IE6会变为绿色*/
+
+        }
+		
+
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+
+    <!-- 自动补全 -->
+    <form action="/server" method="post">
+        <input list="jslib" name="jslib" >
+        <datalist id="jslib">
+            <option value="jQuery">
+            <option value="Dojo">
+            <option value="Prototype">
+            <option value="Augular">
+        </datalist>
+        <input type="submit" value="完成" />
+    </form>
+</body>
+</html>
