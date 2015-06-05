@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>测试框架</title>
+    <link rel="stylesheet" href="css/carrousel.css"/>
+    <style>
+        .view-warp{margin: 20px auto}
+    </style>
+</head>
+<body>
+<div class="view-warp pl">
+    <div class="prev"><img src="imgs/arrow-left.png" alt="上一个"/></div>
+    <div class="show">
+        <ul class="viewport">
+            <li index="0" style="background-color: #df2c53">
+                <img class="top-ad" src="imgs/top-banner.jpg" alt="介绍"/>
+            </li>
+            <li index="1" style="background-color: #f0f">
+                <img class="top-ad" src="imgs/ad_home.jpg" alt="介绍"/>
+            </li>
+            <li index="2" style="background-color: #999">
+                <img class="top-ad" src="imgs/ad_nba.jpg" alt="介绍"/>
+            </li>
+            <li index="3" style="background-color: #666">
+                <img class="top-ad" src="imgs/ad_stock.jpg" alt="介绍"/>
+            </li>
+            <li index="4" style="background-color: #f00;">
+                <img class="top-ad" src="imgs/ad_yuetu.jpg" alt="介绍"/>
+            </li>
+        </ul>
+    </div>
+    <div class="next"><img src="imgs/arrow-right.png" alt="下一个"/></div>
+    <ul class="circle ">
+        <li class="circle-cur"><span>美食餐饮</span></li>
+        <li><span>休闲娱乐</span></li>
+        <li><span>食品饮料</span></li>
+        <li><span>男装女装</span></li>
+        <li class="m0"><span>电脑数码</span></li>
+    </ul>
+</div>
+
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/carrousel.js"></script>
+<script>
+    $(function() {
+        $('.view-warp').carrousel({
+            callback: function(index) {
+                // todo 返回结果是以0开始的 字符串
+                //console.info('跳转到第 *'+ (Number(index)+1) +'* 页');
+            }
+        });
+    });
+</script>
+</body>
+</html>

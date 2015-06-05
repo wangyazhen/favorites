@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>返回顶部</title>
+    <style>
+        .go-top-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+
+            background-image: url(http://7xi8ae.com2.z0.glb.qiniucdn.com/go-top-icon.png);
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="scroll">
+    IonicFramework 是我最中意的Hybrid的开发框架，由于公司人力资源问题，调配不过来开发做移动端的App，我一个小小的前端想要尝试一把Hybrid，于是半年过去了，还好公司要求不高也给我了足够的时间去摸索，搞了个半成品出来。最近由于个人问题即将把这个项目转接了，要开始新生活了，对ionicFramework依依不舍，所以想写两段自己的代码说明我爱过，虽然爱得不那么刻骨铭心哈。
+
+    知识点概况
+
+    废话不多说，说下今天要讲的一个功能点。要看效果请点击ionic 组合查询功能
+
+    Collection-repeat搜索结果集数据量比较推荐使用这个
+    Modal
+    Ion-radio
+    Ion-checkbox
+    Angularjs-ui-bootstrap的Dropdown指令
+    Actionsheet
+    IonicLoading
+    大致就这么些吧，这都是ionic中比较常用的一些指令，如有不明白的后期会发一些这样的Demo和翻译相关的API。
+
+    效果预览及对应的知识点
+
+    1)搜索条件选项页：第一条为多选，其他为单选（如果全部都是单选的话可以用ActionSheet解决）
+
+    searchIndexjpg
+
+
+
+
+
+    2)搜索条件详情页这里我用的是Modal
+
+    multipSelect
+
+    3)搜索结果列表页这个页面里面还有4个筛选条件，直接对查询到的结果进行筛选（因为这里的列表通常信息量会比较大所以列表就用Collection-repeat），筛选条件是Dropdown（这里我用的Angularjs第三方插件的Angular-bootStrap），我就稍加定制并加了Dropbg的半透明背景
+
+    这里大家不要犯我一样的小毛病哈radio一定要给他name赋值哈，不然会跟我一样点来点去四个选项只显示一个还浪费大半天的时间以为Ng-model可以替代name了，打错特错了哈
+
+    这里我也有个问题没解决就是Collection-repeat里嵌套了Ng-repeat有点闪烁的效果不太理想，有朋友有解决方案求指导！！！！
+
+
+    //搜索结果列表页
+    <ion-view>
+        <ion-header-bar class="bar-positive">
+            <div class="buttons">
+                <button ng-click="goBack()" class="button button-icon icon ion-ios7-arrow-back"></button>
+            </div>
+            <h1 class="title has-desc">
+                {{customers.indeustryTitle}}
+                <span class="sub-desc">共找到 {{customers.totalNum.num}} 个</span>
+            </h1>
+            <div class="buttons">
+                <button class="button button-icon icon ion-email" ng-click="sendMass()" ng-disabled="checkAbility()"></button>
+            </div>
+        </ion-header-bar>
+        <div class="bar bar-subheader customer-filter">
+            <div class="row row-tabs">
+                <div class="col col-center tab-item dropdown" dropdown on-toggle="toggled(open,1)">
+                    <div class="col-item dropdown-toggle" dropdown-toggle>所在行业 <i class="icon ion-ios7-arrow-down"></i></div>
+                    <div class="dropdown-menu arrow-box">
+                        <ion-scroll direction="y" zooming="true" style="height:320px;">
+                            <ion-radio ng-value="item.value" name="filteredIndustry" ng-model="filtered.industry" ng-change="filterChange(item,filters.industry)" ng-repeat="item in filters.industry | orderBy:'order':true">
+                                {{item.option}}
+                            </ion-radio>
+                        </ion-scroll>
+                    </div>
+                </div>
+                <div class="col col-center tab-item dropdown" dropdown on-toggle="toggled(open,2)">
+                    <div class="col-item dropdown-toggle" dropdown-toggle>年龄 <i class="icon ion-ios7-arrow-down"></i></div>
+                    <div class="dropdown-menu arrow-box arrow-box2">
+                        <ion-radio ng-value="item.value" name="filteredAge" ng-model="filtered.age" ng-change="filterChange(item,filters.age)" ng-repeat="item in filters.age | orderBy:'order':true">
+                            {{item.option}}
+                        </ion-radio>
+                    </div>
+                </div>
+                <div class="col col-center tab-item dropdown" dropdown on-toggle="toggled(open,3)">
+                    <a class="col-item dropdown-toggle" dropdown-toggle>性别 <i class="icon ion-ios7-arrow-down"></i></a>
+                    <div class="dropdown-menu arrow-box arrow-box3">
+                        <ion-radio ng-value="item.value" name="filteredSex" ng-model="filtered.sex" ng-change="filterChange(item,filters.sex)" ng-repeat="item in filters.sex | orderBy:'order':true">
+                            {{item.option}}
+                        </ion-radio>
+                    </div>
+                </div>
+                <div class="col col-center tab-item dropdown" dropdown on-toggle="toggled(open,4)">
+                    <a class="col-item dropdown-toggle" dropdown-toggle>婚姻 <i class="icon ion-ios7-arrow-down"></i></a>
+                    <div class="dropdown-menu arrow-box arrow-box4">
+                        <ion-radio ng-value="item.value" name="filteredMarry" ng-model="filtered.marry" ng-change="filterChange(item,filters.marry)" ng-repeat="item in filters.marry | orderBy:'order':true">
+                            {{item.option}}
+                        </ion-radio>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="backdrop" class="backdrop"></div>
+        <ion-content class="has-subheader" style="margin-top:10px">
+            <ion-list class="list list-customer-result">
+                <div class="item item-right-editable"
+                     collection-repeat="customer in customers.list | filter:filtered"
+                     collection-item-height="getItemHeight(customer)"
+                     collection-item-width="'100%'"
+                     bindonce="customer">
+                    <div class="item-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox"
+                                   value="{{customer.user_id}}"
+                                   ng-checked=""
+                                   ng-model="customer.selected"
+                                   ng-disabled="!cancel"
+                                    >
+                        </label>
+                    </div>
+                    <div class="item-edited">
+                        <article class="item-thumbnail-left">
+                            <a href="#/space/user/{{customer.id}}" class="item-image">
+                                <img ng-src="{{customer.avatar}}">
+                            </a>
+                            <h2>
+                                <a href="#/space/user" class="dark" ng-bind="customer.nickname"></a>
+                            </h2>
+                            <ul>
+                                <li ng-bind="customer.industry_name"></li>
+                                <li>年收入：{{customer.income_name}}</li>
+                            </ul>
+                        </article>
+                        <div class="request">
+                            <span class="title">最新需求</span>
+                            <button class="button button-outline button-positive" ng-repeat="request in customer.requests" ng-bind="request.name"></button>
+                        </div>
+                    </div>
+                </div>
+            </ion-list>
+        </ion-content>
+        <ion-footer-bar>
+            <div class="action-sheet-title">您可对<span class="dark" ng-bind="customerCountPlus"></span>/<span ng-bind="limitAmount"></span>个用户群发私信</div>
+        </ion-footer-bar>
+    </ion-view>
+
+
+    DropdownDrictivecollectionRepeat
+
+    最后一步当然上代码了
+
+    1.路由
+
+    // 搜索
+    .state('customer', {
+    url: '/customer',
+    templateUrl: 'views/customer/index.html',
+    controller: 'CustomerController'
+    })
+    .state('customer-result', {
+    url: '/customer/result',
+    templateUrl: 'views/customer/customers.html',
+    controller: 'ResultController'
+    })
+    .state('customer-filter', {
+    url: '/customer/filter',
+    templateUrl: 'views/customer/filter.html',
+    controller: 'CustomerController'
+    })
+    2.View页面
+
+    //搜索首页
+
+    //过滤条件Modal页面
+
+</div>
+
+<!--<div id="goTopBtn" class="go-top-container"></div>-->
+
+<script>
+    window.onload = function() {
+        var goTopBtn = document.createElement('div');
+        goTopBtn.style.cssText = "position:fixed;bottom:20px;right:20px;background-size:cover;width:50px;height:50px;background-image: url(http://7xi8ae.com2.z0.glb.qiniucdn.com/go-top-icon.png)";
+        goTopBtn.addEventListener('click', function() {
+          window.scrollTo(0,0);
+        });
+        document.body.appendChild(goTopBtn);
+    };
+
+
+//      var obj = document.getElementById('goTopBtn');
+
+</script>
+</body>
+</html>

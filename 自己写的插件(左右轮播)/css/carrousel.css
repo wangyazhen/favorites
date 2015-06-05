@@ -1,0 +1,79 @@
+/*
+ * by wangyazhen
+ */
+html,body,ul{
+    margin: 0;padding: 0;
+}
+ul{list-style: none;}
+.m0{margin: 0!important;}
+.view-warp {
+    height: 398px;
+    width: 960px;
+    position: relative;
+}
+.view-warp .show {
+    width: 960px;
+    height: 398px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    margin-bottom: 20px;
+}
+.view-warp .viewport{
+    position: absolute;
+}
+.show ul {
+    width: 3500px;
+}
+.show img{
+    width: 100%;
+    vertical-align: middle;
+}
+.show li{
+    width: 960px;
+    height: 398px;
+    float: left;
+    text-align: center;
+}
+.prev img,.next img{vertical-align: middle}
+.prev,.next{
+    width: 45px;
+    height: 110px;
+    line-height: 110px;
+    margin-top: 100px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(43,43,43,0.224);
+
+}
+.prev{
+    left: 18px;
+}
+.next{
+    right: 18px;
+}
+.view-warp .circle{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.circle li {
+    width: 190px;
+    height: 52px;
+    background-color: rgba(43,43,43,0.3);
+    background-color: #242424;
+
+    margin-right: 2.5px;
+    float: left;
+    text-align: center;
+    line-height: 52px;
+}
+.circle span {
+    color: #fff;
+}
+.circle li.circle-cur{
+    background-color: #268a4a;
+    background-color: rgba(38, 138, 74,.8);
+}

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三角型计算</title>
+    <style>
+        body{background-color: #ffe5f5;}
+        .container{
+            width: 1200px;
+            margin: 20px auto;
+        }
+        .container >div {
+            margin: 15px 0;
+        }
+        /* 正方形边框 */
+        .css-arrow-multicolor {
+            border-color: red green blue orange;
+            border-style:solid;
+            border-width:20px;
+            width:0;
+            height:0;
+        }
+        /* 半圆 */
+        #semicircle{
+            width: 100px;
+            height: 50px;
+            background: red;
+            -moz-border-radius: 100px 100px 0 0;
+            -webkit-border-radius:  100px 100px 0 0;
+            border-radius:  100px 100px 0 0;
+        }
+        /* 扇形 */
+        #fanShaped {
+            background: none repeat scroll 0 0 green;
+            -webkit-border-radius: 50px 0 0 0;
+            -moz-border-radius: 50px 0 0 0;
+            border-radius: 50px 0 0 0;
+            height: 50px;
+            width: 50px;
+        }
+        /* 椭圆 */
+        #oval {
+            width: 200px;
+            height: 100px;
+            background: red;
+            -moz-border-radius: 100px / 50px;
+            -webkit-border-radius: 100px / 50px;
+            border-radius: 100px / 50px;
+        }
+        /* 三角朝上 */
+        #triangle-up {
+            width: 0;
+            height: 0;
+            border: 50px solid;
+            border-color: transparent transparent red;
+        }
+        /* 左上三角形 */
+        #triangle-topleft {
+            width: 0;
+            height: 0;
+            border: 100px solid;
+            border-color: blue transparent transparent blue;
+        }
+        /* 五角星 */
+        #star-five {
+            margin: 50px 0;
+            position: relative;
+            display: block;
+            color: red;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid red;
+            border-left: 100px solid transparent;
+            -moz-transform: rotate(35deg);
+            -webkit-transform: rotate(35deg);
+            -ms-transform: rotate(35deg);
+            -o-transform: rotate(35deg);
+            transform: rotate(35deg);
+        }
+        #star-five:before {
+            border-bottom: 80px solid red;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -45px;
+            left: -65px;
+            display: block;
+            content: '';
+            -webkit-transform: rotate(-35deg);
+            -moz-transform: rotate(-35deg);
+            -ms-transform: rotate(-35deg);
+            -o-transform: rotate(-35deg);
+            transform: rotate(-35deg);
+        }
+        #star-five:after {
+            position: absolute;
+            display: block;
+            color: red;
+            top: 3px;
+            left: -105px;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid red;
+            border-left: 100px solid transparent;
+            -webkit-transform: rotate(-70deg);
+            -moz-transform: rotate(-70deg);
+            -ms-transform: rotate(-70deg);
+            -o-transform: rotate(-70deg);
+            transform: rotate(-70deg);
+            content: '';
+        }
+        /* 心型 */
+        #heart {
+            position: relative;
+            width: 100px;
+            height: 90px;
+        }
+        #heart:before,
+        #heart:after {
+            position: absolute;
+            content: "";
+            left: 50px;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background: #ff4348;
+            -moz-border-radius: 50px 50px 0 0;
+            -webkit-border-radius: 50px 50px 0 0;
+            border-radius: 50px 50px 0 0;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg); -
+        webkit-transform-origin: 0 100%;
+            -moz-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+        }
+        #heart:after {
+            left: 0;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+            -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+        }
+        /* 对话泡泡 */
+        #talkbubble {
+            width: 120px;
+            height: 80px;
+            background: red;
+            position: relative;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+        #talkbubble:before {
+            content:"";
+            position: absolute;
+            right: 100%;
+            top: 26px;
+            width: 0;
+            height: 0;
+            border-top: 13px solid transparent;
+            border-right: 26px solid red;
+            border-bottom: 13px solid transparent;
+        }
+        /* pac 缺四分之一 */
+        #pac-man {
+            width: 0px;
+            height: 0px;
+            border: 60px solid red;
+            border-color: red transparent red red ;
+            -moz-border-radius: 60px;
+            -webkit-border-radius: 60px;
+            border-radius: 60px;
+        }
+        /* 平行四边形 */
+        #parallelogram {
+            width: 150px;
+            height: 100px;
+            -webkit-transform: skew(20deg);
+            -moz-transform: skew(20deg);
+            -o-transform: skew(20deg);
+            transform: skew(20deg);
+            background: red;
+        }
+        /* 八卦图 阴阳图 */
+        #yin-yang {
+            width: 96px;
+            height: 48px;
+            background: #eee;
+            border-color: black;
+            border-style: solid;
+            border-width: 2px 2px 50px 2px;
+            border-radius: 100%;
+            position: relative;
+        }
+        #yin-yang:before {
+            content: "";
+            position:
+            absolute;
+            top: 50%;
+            left: 0;
+            background: #eee;
+            border: 18px solid black;
+            border-radius: 100%;
+            width: 12px;
+            height: 12px;
+        }
+        #yin-yang:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: black;
+            border: 18px solid #eee;
+            border-radius:100%;
+            width: 12px;
+            height: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div id="yin-yang"></div>
+    <div class="css-arrow-multicolor"></div>
+    <div id="semicircle"></div>
+    <div id="fanShaped"></div>
+    <div id="oval"></div>
+    <div id="triangle-up"></div>
+    <div id="triangle-topleft"></div>
+    <div id="star-five"></div>
+    <div id="pac-man"></div>
+    <div id="parallelogram"></div>
+    <div id="heart"></div>
+    <div id="talkbubble"></div>
+</div>
+</body>
+</html>

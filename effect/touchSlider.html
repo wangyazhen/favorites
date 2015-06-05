@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sdf</title>
+	<script src="jsLib/jquery.js"></script>
+	<script src="jsLib/jquery.touchslider.js"></script>
+	<link rel="stylesheet" href="cssLib/jquery.slidebox.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div class="touchslider">
+	    <div class="touchslider-viewport slideBox" style="width:500px;overflow:hidden">
+		    <div class="items">
+		        <div class="touchslider-item"><img src="http://7xi5d3.com2.z0.glb.qiniucdn.com/pavilion_ad1.png" alt="联合馆"><!-- your html content --></div>
+		        <div class="touchslider-item"><img src="http://7xi5d3.com2.z0.glb.qiniucdn.com/pavilion_ad2.png" alt="联合馆"></div>
+		    </div>
+	    </div>
+
+	    <div>
+	        <span class="touchslider-prev">←</span>
+	        <span class="touchslider-nav-item touchslider-nav-item-current">1</span>
+	        <span class="touchslider-nav-item">2</span>
+	        <span class="touchslider-next">→</span>
+	    </div>
+	</div>
+
+<script>
+jQuery(function($) {
+    $(".touchslider").touchSlider({/*options*/
+	    container: this,	
+		duration: 350, // the speed of the sliding animation in milliseconds
+		delay: 3000, // initial auto-scrolling delay for each loop
+		margin: 5, // borders size. The margin is set in pixels.
+		mouseTouch: true,
+		namespace: "touchslider",
+		next: ".touchslider-next", // jQuery object for the elements to which a "scroll forwards" action should be bound.
+		pagination: ".touchslider-nav-item",
+		currentClass: "touchslider-nav-item-current", // class name for current pagination item.
+		prev: ".touchslider-prev", // jQuery object for the elements to which a "scroll backwards" action should be bound.
+		
+		autoplay: false, // whether to move from image to image automatically
+		viewport: ".touchslider-viewport"
+    });
+});
+</script>
+</body>
+</html>
