@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>es6</title>
+</head>
+<body>
+	<h2>ECMAScript 6 入门</h2>
+<script>
+	// chrome 
+	'use strict';
+	// 块级作用域
+	var a = [];
+	for (let i = 0; i< 10; i ++) {
+		a[i] = function() {
+			console.log(i);
+		}
+	}
+	a[6]();
+
+	function f1() {
+	  let n = 5;
+	  if (true) {
+	      let n = 10;
+	  }
+	  console.log(n); // 5
+	}
+	// 不存在变量提升
+	function doSomething() {
+		console.log(a); // Uncaught ReferenceError: a is not defined
+		let a = 'aaaaaaa';
+	}
+
+	// 不允许重复声明
+	function func(arg) {
+	  //let arg; // 报错 Identifier 'arg' has already been declared
+	}
+
+	function func(arg) {
+	  {
+	    let arg; // 不报错
+	  }
+	}
+
+	// const命令
+	// const也用来声明变量，但是声明的是常量。一旦声明，常量的值就不能改变。
+</script>
+</body>
+</html>
