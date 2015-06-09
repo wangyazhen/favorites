@@ -11,10 +11,14 @@
   var Carrousel = function() {
     var _this = this;
 
+    /* ---- 默认配置选项 ---- */
     this.opts = {
+      showButton: true,
       autoplay: false,
       hiddenBottom: false,
       delay: 3500,
+      width: 960,
+      height: 398,
       callback: null
     };
 
@@ -22,23 +26,44 @@
 
       this.opts = $.extend(this.opts, opts);
 
+      this.container = el;
       this.viewport = $('.viewport');
       this.items = this.viewport.children();
       this.circleContainer = $('.circle');
       this.circleItems = $('.circle li');
+      this.showViewport = this.viewport.parent();
 
-      $('.next').click(this.nextScroll);
-      $('.prev').click(this.prevScroll);
+      this.nextBtn = $('.next');
+      this.prevBtn = $('.prev');
+
+      this.nextBtn.click(this.nextScroll);
+      this.prevBtn.click(this.prevScroll);
       this.circleItems.click(this.itemScroll);
 
+      // 相关配置
       if (this.opts.autoplay === true) {
         this.intervalId = setInterval(function() {
           _this.nextScroll();
         }, _this.opts.delay);
       }
       if (this.opts.hiddenBottom === true) {
-        this.circleContainer.hide();
+        this.circleContainer.remove();
       }
+      if (this.opts.showButton === false) {
+        this.nextBtn.remove();
+        this.prevBtn.remove();
+      }
+
+      // 这个不是必须的 可以通过CSS来做
+      //this.setViewportSize(this.opts.width, this.opts.height);
+    };
+
+    this.setViewportSize = function(w, h) {
+      this.container.css({width: w, height: h});
+      this.viewport.css({width: w * this.items.length, height: h});
+      this.showViewport.css({width: w, height: h});
+      this.items.css({width: w, height: h});
+      this.circleItems.css({width: (w - 10) / this.circleItems.length });
     };
 
     this.nextScroll = function() {

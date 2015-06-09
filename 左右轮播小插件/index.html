@@ -11,10 +11,10 @@
 <body>
 <div class="view-warp pl">
     <div class="prev"><img src="imgs/arrow-left.png" alt="上一个"/></div>
-    <div class="show">
+    <div class="show-viewport">
         <ul class="viewport">
             <li index="0" style="background-color: #df2c53">
-                <img class="top-ad" src="imgs/top-banner.jpg" alt="介绍"/>
+                <img class="top-ad" src="imgs/ad_yuetu.jpg" alt="介绍"/>
             </li>
             <li index="1" style="background-color: #f0f">
                 <img class="top-ad" src="imgs/ad_home.jpg" alt="介绍"/>
@@ -25,8 +25,8 @@
             <li index="3" style="background-color: #666">
                 <img class="top-ad" src="imgs/ad_stock.jpg" alt="介绍"/>
             </li>
-            <li index="4" style="background-color: #f00;">
-                <img class="top-ad" src="imgs/ad_yuetu.jpg" alt="介绍"/>
+            <li index="4" style="background-color: #f00;">                
+                <img class="top-ad" src="imgs/ad_auto.jpg" alt="介绍"/>
             </li>
         </ul>
     </div>
@@ -45,6 +45,9 @@
 <script>
     $(function() {
         $('.view-warp').carrousel({
+            autoplay: false,
+            showButton: true,
+            hiddenBottom: false,
             callback: function(index) {
                 // todo 返回结果是以0开始的 字符串
                 //console.info('跳转到第 *'+ (Number(index)+1) +'* 页');

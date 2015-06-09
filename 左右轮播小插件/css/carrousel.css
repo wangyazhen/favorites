@@ -11,25 +11,24 @@ ul{list-style: none;}
     width: 960px;
     position: relative;
 }
-.view-warp .show {
+.view-warp .show-viewport {
     width: 960px;
     height: 398px;
     overflow: hidden;
-    float: left;
-    position: relative;
-    margin-bottom: 20px;
+    position: relative; 
+    float: left;   
 }
 .view-warp .viewport{
     position: absolute;
 }
-.show ul {
+.show-viewport ul {
     width: 3500px;
 }
-.show img{
+.show-viewport img{
     width: 100%;
     vertical-align: middle;
 }
-.show li{
+.show-viewport li{
     width: 960px;
     height: 398px;
     float: left;
@@ -62,8 +61,8 @@ ul{list-style: none;}
 .circle li {
     width: 190px;
     height: 52px;
-    background-color: rgba(43,43,43,0.3);
     background-color: #242424;
+    background-color: rgba(43,43,43,0.3);
 
     margin-right: 2.5px;
     float: left;
