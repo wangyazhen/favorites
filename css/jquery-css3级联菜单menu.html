@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>多级菜单 jQuery</title>
+		<style>
+			@import url("http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.css");
+			.tree span{
+				display: inline-block;
+				position: relative;
+				z-index: 1;
+				background-color: #16a085;
+				color: #fff;
+				padding: .4em .6em .4em .9em;
+				cursor: pointer;
+				font-size: 18px;
+				border-radius: 5px;
+			}
+			.tree span i{ margin-left: .4em;}
+			.tree li{
+				position: relative;
+				padding: .5em 1em;
+				font-size: 18px;
+				color: #16A085;
+				list-style: none;
+			}
+			.tree li li:before{
+				  position: absolute;
+				  content: '';
+				  border-bottom: 2px solid #16A085;
+				  left: 0em;
+				  top: .1em;
+				  height: 1em;
+				  width: 1em;
+			}
+			.tree li li:after{
+				position: absolute;
+				content: '';
+				height: 100%;
+				left: 0;
+				top: -1em;
+				border-left: 2px solid #16A085;
+			}
+			.tree ul {display: none;}
+		</style>
+	</head>
+	<body>
+		<div class="warp">
+			<ul class="tree">
+				<li>
+					<span>javascript</span>
+					<ul>
+						<li>
+							<span>angular</span>
+							<ul>
+								<li>factory</li>
+								<li>server</li>
+								<li>filter</li>
+							</ul>
+						</li>
+						<li>React </li>
+						<li>bootstrap</li>
+					</ul>
+				</li>
+				<li>
+					<span>node</span>
+					<ul>
+						<li>http</li>
+						<li>fs</li>
+					</ul>
+				</li>
+				<li>
+					<span>模块话</span>
+					<ul>
+						<li>ADM和Require.js</li>
+						<li>CMD 和 sea.js</li>
+						<li>ES6 Harmony 的模块</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script>
+			$(function() {
+				$('.tree span').append('<i class="fa fa-plus"></i>'); //minus
+				
+				$('.tree span').click(function() {
+					var tagi = $(this).children('i');
+					var $ul = $(this).parent().children('ul');
+					if ($ul.is(':visible')) {
+						$ul.slideUp();
+						tagi.removeClass('fa-minus').addClass('fa-plus');
+					} else {
+						$ul.slideDown();
+						tagi.removeClass('fa-plus').addClass('fa-minus');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标划过反动图片</title>
+		<style>
+            @import url("http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.css");
+
+            html,body,ul,li{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .nav {
+                border: 1px solid #ddd;
+                width: 800px;
+                margin: 20px auto;
+            }
+            .nav li {
+                display: inline-block;
+                height: 60px;
+                line-height: 60px;
+                overflow: hidden;
+            }
+            .nav li > a {
+                display: block;
+                padding: 0 20px;
+                font-size: 1.5em;
+                text-decoration: none;
+
+                -webkit-transition: all .3s;
+                transition: all .3s;
+            }
+            .nav li a span, .nav li a i{
+                display: block; text-align: center; height: 60px;line-height: 60px;
+            }
+
+            /* hover */
+            .nav li:hover a{
+                -webkit-transform: translateY(-60px);
+                transform: translateY(-60px);
+            }
+		</style>
+	</head>
+	<body>
+		<nav class="nav">
+			<ul>
+				<li><a href=""><span>首页</span><i class="fa fa-home"></i></a></li>
+				<li><a href=""><span>首页</span><i class="fa fa-home"></i></a></li>
+				<li><a href=""><span>首页</span><i class="fa fa-home"></i></a></li>
+				<li><a href=""><span>首页</span><i class="fa fa-home"></i></a></li>
+				<li><a href=""><span>首页</span><i class="fa fa-home"></i></a></li>
+				<li><a href=""><span>首页</span><i class="fa fa-home"></i></a></li>
+			</ul>
+		</nav>
+	</body>
+</html>
