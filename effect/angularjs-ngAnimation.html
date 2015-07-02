@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+	<script src="https://rawgit.com/angular/bower-angular-animate/master/angular-animate.min.js"></script>
+  <meta charset="utf-8">
+  <title>angular js ngAnimation 动画</title>
+	<style>
+		.t {
+			border: 1px solid #8b8b8b;
+			padding: 1em;
+			width: 200px;
+			margin-top: 1em;
+			background-color: #eabcdd;
+		}
+		.fade.ng-enter {
+			transition: all .5s ease-in-out;
+			/*transition: 5s linear all;*/
+			opacity: 0;
+		}
+		.fade.ng-enter.ng-enter-active { opacity: 1; }
+		
+		/* ------- */
+		.bool.ng-show {
+		  transition: .3s linear all;
+			opacity: 1;
+		}
+		.bool.ng-hide {
+		  transition: .3s linear all;
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+http://www.cnblogs.com/wushangjue/p/4529063.html
+  <div ng-app="anim" ng-init="foo=true">
+    <button ng-click="foo=true">fade in</button>
+		<button ng-click="foo=false">fade out</button>
+		
+		<div class="fade t" ng-if="foo">		  
+			我是显示的
+		</div>
+		<hr ng-init="bool=true" /> 
+		<div ng-show="bool" class="bool">
+        This is ng-show.
+    </div>
+    <div ng-hide="bool" class="bool">
+        This is ng-hide.
+    </div>
+    <button ng-click="bool=!bool">Toggle</button>
+  </div>
+<script>
+  angular.module('anim', ['ngAnimate']);
+</script>	
+</body>
+</html>
