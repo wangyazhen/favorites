@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">	
+	<title>跳动动画</title>
+	<style>
+	/* 参考自  http://www.cnblogs.com/PeunZhang/p/3685980.html */
+		#view {
+		}
+		#view .viewport {
+			margin: 0 auto;
+			width: 180px;
+			height: 300px;
+			background: url('img/charactor.png') no-repeat;	
+			-webkit-animation-name: charactor ;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-timing-function: step-start;/* 马上跳到动画每一结束桢的状态 */			
+		}
+		.btns {
+			margin-left: 32%;
+			margin-top: 20px;
+		}
+		.btns > a {
+			float: left;
+			padding: 5px 8px;
+			color: #0dae51;
+			border: 1px solid #ccc;
+			margin-left: 20px;
+			min-width: 50px;
+			text-decoration: none;
+			text-align: center;
+		}		
+		.btns > a:hover{
+			color: #fff;
+			background-color: #0dae51;
+		}
+		.btns > a.pause{
+			color: #c61420;
+		}
+		.btns > a.pause:hover{
+			color: #fff;
+			background-color: #c61420;
+		}
+
+		@-webkit-keyframes charactor {
+			0%{     background-position: 0 0}
+			14.3%{  background-position: -180px 0 }
+			28.6%{  background-position: -360px 0 }
+			42.9%{  background-position: -540px 0 }
+			57.2%{  background-position: -720px 0 }
+			71.5%{  background-position: -900px 0 }
+			85.8%{  background-position: -1080px 0 }
+			100%{   background-position: 0 0 }
+		}
+		/* 最快 */
+		.x-fast { -webkit-animation-duration: 500ms; }
+		.fast { -webkit-animation-duration: 600ms; }
+		.normal { -webkit-animation-duration: 800ms; }
+		.slow { -webkit-animation-duration: 1000ms; }
+		.pause-charector { -webkit-animation-play-state: paused;}
+	</style>
+</head>
+<body>
+	<div class="warp">
+		<div id="view">
+			<div class="viewport "></div>
+		</div>
+		<div class="btns">
+			<a href="#" data-way="x-fast">最快</a>
+			<a href="#" data-way="fast">快</a>
+			<a href="#" data-way="normal">正常</a>
+			<a href="#" data-way="slow">慢</a>
+			<a class="pause" data-way="pause-charector" href="#">暂停</a>
+		</div>
+	</div>
+	<script>
+		var btns = document.querySelectorAll('.btns > a');
+		var viewport = document.querySelector('#view>.viewport');
+		for (var i = 0, len = btns.length; i < len; i ++) {
+			btns[i].addEventListener('click', 
+				(function(index){
+					return function() {
+						console.info('点击的是', index);
+						var way = this.getAttribute('data-way');
+						if (way) {
+							viewport.classList.add(way);
+						}
+					}
+				})(i)
+			);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择效果</title>
+    <style>
+        .sor-has-box { 
+            position: relative;
+            display: inline-block
+        }
+        .sor-has-box > input {
+          display: none;
+        }
+        .sor-has-box > label {
+          width: 25px;
+          height: 25px;
+          display: inline-block;
+          background-color: orange;
+        }
+        .sor-has-box > label:before {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 5px;
+            display: block;
+            width: 16px;
+            height: 7px;
+            border: solid white;
+            border-width: 0 0 2px 2px;
+            transform: rotate(-46deg);
+        }
+
+        .sor-has-box input:checked + label:before{
+            border-color: blue;
+        }
+        /* 开关 */
+        .toggle-box > input{ display: none;}
+        .toggle-box > label {            
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 20px;
+            border: 1px solid #ccc;
+            background-color: #ddd;
+            transition: background-color .3s ease;
+        }
+        .toggle-box > label:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 25px;
+            height: 20px;
+            background-color: #fff;
+            transition: right .3s ease;
+        }
+        .toggle-box > input:checked + label{
+            background-color: #41b5fe;
+        }
+        .toggle-box > input:checked + label:after{
+            right: 50%;
+        }
+    </style>
+</head>
+<body>
+    <label class="sor-has-box">
+        <input id="field" type="checkbox">
+            <label for="field"></label>
+      </label>
+    <label class="toggle-box">
+        <input id="toggle-input" type="checkbox">
+        <label for="toggle-input"></label>
+    </label>
+</body>
+</html>

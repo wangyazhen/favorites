@@ -25,7 +25,11 @@
 * [bootstrap 中文网](http://www.bootcss.com)： 国内比较快，方便查阅
 * [select2](https://select2.github.io/examples.html)： 对select 美化(优化使用)的一个jQuery插件
 * [less](http://www.bootcss.com/p/lesscss)： less 学习
+* Datatables 一款jQuery表格插件，高度灵活的工具 [英文](https://www.datatables.net/): [中文](http://dt.thxopen.com/)
+* [listjs](http://www.listjs.com/): js 列表操作， 结合dom 可实现排序搜索等。
 * [一个网站模板](http://iarouse.com/dist-square/v1.6/index.html): 不错
+* [loading btn](https://github.com/hakimel/Ladda): 加载效果
+* [表单验证](http://parsleyjs.org/): 一款很强大的jQuery表单验证库
 
 #### jade 记录
 * [jade 官网](http://jade-lang.com/) 和 [中文版本](http://blog.jayself.com/2014/07/28/Jade/)
