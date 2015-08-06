@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>less 应用</title>
+	<style type="text/less">
+		@fontColor: #fff;
+		@bgColor: rgb(39,174,96);
+		body{
+			margin: 0;
+			/*font-family: 'microsoft yahei';*/
+		}
+		section {
+			background-color: @bgColor;
+			padding: 5%;
+			h1 {
+				color: @fontColor;
+				font-size: 3rem;
+			}
+			p {
+				font-size: 2rem;
+				color: @fontColor;
+			}
+		}
+		/* 继承 只继承根基样式 子集的不会应用  section .article */
+		/*section {
+			&:extend(.article);
+		};*/
+	</style>
+	<script src="http://cdn.bootcss.com/less.js/2.5.0/less.min.js"></script>
+</head>
+<body>
+	
+	<section>
+		<h1>less style 引用</h1>
+		<p>
+			稳定、快速、免费的开源项目 CDN 服务
+			共收录了 1321 个开源项目
+		</p>
+	</section>
+</body>
+</html>
