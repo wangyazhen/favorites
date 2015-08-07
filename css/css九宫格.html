@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>格子</title>
+	<style>
+		.box {
+			width: 165px;
+			font-size: 0;
+			padding: 5px 0 0 5px;
+		}
+		.box > span {
+			position: relative;	
+			font-size: 18px;
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			border: 5px solid blue;
+			text-align: center;
+			margin-left: -5px;
+  			margin-top: -5px;
+		}
+		.box > span:hover{
+			border-color: red;
+			z-index: 50;  			
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+		<span>6</span>
+		<span>7</span>
+		<span>8</span>
+		<span>9</span>
+	</div>
+
+<!-- <script src="http://cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.min.js"></script> -->
+</body>
+</html>

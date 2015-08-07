@@ -10,6 +10,7 @@
 
   var Carrousel = function() {
     var _this = this;
+    var animateEnd = 1;
 
     /* ---- 默认配置选项 ---- */
     this.opts = {
@@ -20,6 +21,16 @@
       width: 960,
       height: 398,
       callback: null
+    };
+
+    this.autoplay = function() {
+      if (this.opts.autoplay === true) {
+        this.intervalId = setInterval(function() {
+          if (animateEnd === 1) {
+            _this.nextScroll();
+          }
+        }, _this.opts.delay);
+      }
     };
 
     this.init = function(el, opts) {
@@ -40,12 +51,13 @@
       this.prevBtn.click(this.prevScroll);
       this.circleItems.click(this.itemScroll);
 
+      this.container.mouseenter(function(){
+        clearInterval(_this.intervalId);
+      });
+      this.container.mouseleave(_this.autoplay.bind(_this));      
+
       // 相关配置
-      if (this.opts.autoplay === true) {
-        this.intervalId = setInterval(function() {
-          _this.nextScroll();
-        }, _this.opts.delay);
-      }
+      this.autoplay(); 
       if (this.opts.hiddenBottom === true) {
         this.circleContainer.remove();
       }
@@ -97,7 +109,7 @@
         this.opts.callback(currentIndex);
       }
     };
-    var animateEnd = 1;
+    
     this.itemScroll = function(e) {
       if (animateEnd === 0) { return;}
 

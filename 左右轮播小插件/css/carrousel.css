@@ -63,11 +63,11 @@ ul{list-style: none;}
     height: 52px;
     background-color: #242424;
     background-color: rgba(43,43,43,0.3);
-
     margin-right: 2.5px;
     float: left;
     text-align: center;
     line-height: 52px;
+    cursor: pointer;
 }
 .circle span {
     color: #fff;
