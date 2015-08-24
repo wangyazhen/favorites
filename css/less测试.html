@@ -26,6 +26,27 @@
 		/*section {
 			&:extend(.article);
 		};*/
+		/* 测试开始 */
+
+		/*@colors: green, red, blue;
+
+		.example_module {
+		    .-(@i: length(@colors)) when (@i > 0) {
+		        @name: extract(@colors, @i);
+		        &.@{name} {background: @name}
+		        .-((@i - 1));
+		    } .-;
+		}*/
+		
+		/* ///// */
+		@widths: 45,50,65,70,80,90,100,110,135,200;
+		.-(@i: length(@widths)) when (@i > 0) {
+	        @w: extract(@widths, @i);
+	        .w@{w} {
+	        	width: 1px * @w
+	        }
+	        .-((@i - 1));
+	    } .-;
 	</style>
 	<script src="http://cdn.bootcss.com/less.js/2.5.0/less.min.js"></script>
 </head>

@@ -54,10 +54,14 @@
       this.container.mouseenter(function(){
         clearInterval(_this.intervalId);
       });
-      this.container.mouseleave(_this.autoplay.bind(_this));      
+      //this.container.mouseleave(_this.autoplay.bind(_this));
+      // 兼容ie8写法
+      this.container.mouseleave(function() {
+        _this.autoplay.apply(_this);
+      });
 
       // 相关配置
-      this.autoplay(); 
+      this.autoplay();
       if (this.opts.hiddenBottom === true) {
         this.circleContainer.remove();
       }
@@ -109,7 +113,7 @@
         this.opts.callback(currentIndex);
       }
     };
-    
+
     this.itemScroll = function(e) {
       if (animateEnd === 0) { return;}
 
