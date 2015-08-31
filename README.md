@@ -36,3 +36,6 @@
 * [jade github 中文](https://github.com/jadejs/jade/blob/master/Readme_zh-cn.md)
 * [在线编写jade](http://naltatis.github.io/jade-syntax-docs/#basics)
 * [jade 数据渲染](http://blog.csdn.net/anialy/article/details/17740065)
+
+#### 笔记
+* [css 权重](http://www.w3cplus.com/css/css-specificity-things-you-should-know.html)
