@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>spinner</title>
+  <style>
+    .spinner {
+      position: relative;
+      margin: 3rem auto;
+      width: 16px;
+      height: 16px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 2px solid #00aced;
+      animation: spin 1s infinite linear;
+    }
+    .spinner:before, .spinner:after {
+        content: '';
+        border: 4px solid #fff;
+        position: absolute;
+        top: 4px;
+        left: -4px;
+        border-top-color: #00aced;
+    }
+    .spinner:after {
+        top: 2px;
+        left: 12px;
+        border-top-color: #FFF;
+        border-bottom-color: #00aced;
+    }
+    @-webkit-keyframes spin {
+      to { transform: rotate(-360deg)}
+    }
+  </style>
+</head>
+<body>
+	<div class="spinner"></div>
+</body>
+</html>

@@ -32,39 +32,37 @@
 	</div>
 
 <script>
-	/*
-	* 未完成效果
-	* 改变颜色  和 清空 都不理想 
-	*
-	*/
+	
 	var canvas = document.getElementById('demo');
 	var context = canvas.getContext('2d');		
-	initial(context);
-	context.save();
+	
 	function changeColor(color) {
 		context.strokeStyle = color;
 	}
-	function initial(context) {
-		context.strokeStyle='blue';
-		canvas.onmousedown  = function(event) {
-			var e = event || window.event;
-			context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-			document.onmousemove = function(ev) {
-				var ev = ev || window.event;
-				console.log('lineTo t: ', ev.clientY - canvas.offsetTop);
-				context.lineTo(ev.clientX - canvas.offsetLeft, ev.clientY - canvas.offsetTop);
-				context.stroke();
-			};
-			document.onmouseup = function() {
-				document.onmousemove = null;
-				document.onmouseup  = null;
-			};
-		};		
+	function initial(event) {
+		//context.strokeStyle='blue';		
+		var e = event || window.event;
+		context.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+
+		canvas.onmousemove = function(ev) {
+			var ev = ev || window.event;
+			console.log('lineTo t: ', ev.clientY - canvas.offsetTop);
+			context.lineTo(ev.clientX - canvas.offsetLeft, ev.clientY - canvas.offsetTop);
+			context.stroke();
+		};
+		document.onmouseup = function() {
+			canvas.onmousemove = null;
+			document.onmouseup  = null;
+		};
 	}
+	canvas.onmousedown = initial
+	
+	
 
 	function clearBroad() {
-		context.clearRect(0,0,600,400);
-		context.restore();
+		// context.clearRect(0,0,600,400);
+		// 
+		canvas.width = canvas.width;
 	}
 </script>	
 </body>
