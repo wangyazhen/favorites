@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link href="http://cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css" rel="stylesheet">
+  <link href="http://cdn.bootcss.com/jqueryui/1.10.4/css/jquery.ui.theme.css" rel="stylesheet">
+  
+<style>
+	.warp {
+		padding: 15px;
+	}
+</style>
+</head>
+<body>
+	<h1>autoComplete 测试</h1>
+
+	<div class="warp">
+		<label for="taggs">标签: </label>
+		<input type="text" id="tags">
+		<label for="other">其它: </label>
+		<input type="text" id="other">
+	</div>
+
+<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.js"></script>
+<script>
+	 $(function function_name (argument) {
+	 	// body...
+	 	 var availableTags = [
+	      "ActionScript",
+	      "AppleScript",
+	      "Asp",
+	      "BASIC",
+	      "C",
+	      "C++",
+	      "Clojure",
+	      "COBOL",
+	      "ColdFusion",
+	      "Erlang",
+	      "Fortran",
+	      "Groovy",
+	      "Haskell",
+	      "Java",
+	      "JavaScript",
+	      "Lisp",
+	      "Perl",
+	      "PHP",
+	      "Python",
+	      "Ruby",
+	      "Scala",
+	      "Scheme"
+	    ];
+	    var data = [
+	      { label: "anders", category: "" },
+	      { label: "andreas", category: "" },
+	      { label: "antal", category: "" },
+	      { label: "annhhx10", category: "Products" },
+	      { label: "annk K12", category: "Products" },
+	      { label: "annttop C13", category: "Products" },
+	      { label: "anders andersson", category: "People" },
+	      { label: "andreas andersson", category: "People" },
+	      { label: "andreas johnson", category: "People" }
+	    ];
+		 $('#tags, #other').autocomplete({
+		 	source: function(req, res) {		 		
+		 		sendQuery(req.term, function(err, results) {
+		 			res($.map(results, function(obj) {
+		 				return {
+		 					label: obj.city_name,
+		 					value: obj.city_name,
+		 					code: obj.airport_code
+		 				}
+		 			}))
+		 		});
+		 	},
+		 	select: function(event, ui) {
+		 		console.log('选择的是:', ui.item.code);
+		 	}
+		 });
+	 })
+
+  function sendQuery(str, callback) {
+    $.ajax({
+      type: 'GET',
+      async: false,
+      url: 'http://e0.flightcdn.com/ajax/ignoreall/airport_names_yajl.rvt?q=' + str,
+      dataType: 'jsonp',
+      jsonp: 'callback',
+      success: function(res) {
+        callback(null, res.aList);
+      },
+      error: function(e) {
+        callback(e);
+        console.error('sendQuery has error:',e);
+      }
+    });
+  }
+</script>	
+</body>
+</html>

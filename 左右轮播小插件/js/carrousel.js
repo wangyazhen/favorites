@@ -25,11 +25,13 @@
 
     this.autoplay = function() {
       if (this.opts.autoplay === true) {
-        this.intervalId = setInterval(function() {
+        clearInterval(this.intervalId);
+        var autoFun = function() {
           if (animateEnd === 1) {
             _this.nextScroll();
           }
-        }, _this.opts.delay);
+        };
+        this.intervalId = setInterval(autoFun, _this.opts.delay);
       }
     };
 

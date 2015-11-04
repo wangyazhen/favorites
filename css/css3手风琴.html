@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3 手风琴</title>
+    <style>
+        .accordion {
+            width: 500px;
+            margin: auto;
+            border: 1px solid #999;
+        }
+        .accordion h2 {
+            position: relative;
+            margin: 5px 0;
+        }
+        .accordion h2 >a{
+            background-color: #8f8f8f;
+            border-radius: 5px;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+        }
+        .accordion h2:hover >a {
+            background-color: #28d;
+        }
+        /* content */
+        .accordion > div > p {            
+            height: 0;
+            margin: 0;
+            overflow: hidden;
+            padding: 0 10px;
+            transition: height .3s ease-in;
+        }
+        .accordion :target > p{
+            height: 100px;
+            overflow: auto;
+        }
+        /* :target window.location.hash   值 和id等时  改id元素的样式起效; */
+    </style>
+</head>
+<body>
+<div class="accordion">
+    <div id="section-1">
+        <h2><a href="#section-1">第一部分</a></h2>
+        <p>第一部分 111</p>
+    </div>
+    <div id="section-2">
+        <h2><a href="#section-2">第二部分</a></h2>
+        <p>第二部分  二 2222</p>
+    </div>
+    <div id="section-3">
+        <h2><a href="#section-3">第三部分</a></h2>
+        <p>第仨部分 三  33333</p>
+    </div>
+</div>
+</body>
+</html>
