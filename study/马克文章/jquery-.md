@@ -22,3 +22,20 @@
 还是上边那个选择器，一开始我们把DOM树中所有的`p`节点找出来，紧接着我们判断这些节点中的前兄弟节点是否符合`input[name="readme"]`这个规则，这样就又减少了集合的元素，只有符合当前的子规则才会匹配再上一条子规则。
 
 浏览器解析CSS的引擎就是用这样的算法去解析，同理，Sizzle引擎也是如此，并且在源码里边，它判断一个节点是否符合某个规则的行为定义为matcher。
+
+
+### jquery hasChild 实现
+```js
+$.fn.hasChild = function(selector){
+  return ($("> " + selector, this).length > 0);
+};
+```
+### jquery hasScrollBar 
+
+```js
+(function($) {
+  $.fn.hasScrollBar = function() {
+      return this.get(0).scrollHeight > this.height();
+  }
+})(jQuery);
+```          
