@@ -28,3 +28,12 @@
 ## Excel 公式
 excell json 公式
 `=CONCATENATE("""",A1, """:""",B1, """",",") `
+
+excel to json 
+`=CONCATENATE("{","name",":","""",A1,"""",",", "two",":","""",B1,"""",",", "three",":","""",C1,"""","}",",")`
+
+
+out
+
+
+`Dragon Air  KA  KDA {name:"Dragon Air",two:"KA",three:"KDA"},`

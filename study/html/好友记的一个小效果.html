@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css </title>
+	<style>
+		.cir {
+		  width: 50px;
+		  height: 50px;
+		  display: inline-block;
+		  background-color: red;
+		  color: #fff;
+		  font-size: 24px;
+		  text-align: center;
+		  line-height: 50px;
+		  border-radius: 50%;
+		  position: absolute;
+		  left: 200px;
+		  top: 15px;
+		  z-index: 15;  
+		}
+		/* 伪元素在父元素之下要父元素没有z-index 才可以
+		.cir:after {
+		  position: absolute;
+		  z-index: -10;
+		  top: -5px;
+		  left: -15px;
+		  content: '';
+		  padding: 5px;
+
+		  width: 60px;
+		  height: 60px;
+		  border: 1px solid #aaa;
+		  border-radius: 50%;
+		  background-color: green;
+		}*/
+		/* drop -- */
+		.drop {
+		  width: 60px;
+		  height: 60px;
+		  display: inline-block;
+		  background-color: #ccc;
+		  border-radius: 50%;
+		  position: absolute;
+		  left: 195px;
+		  top: 11px;
+		  z-index: 10;
+		}
+
+		.bar {
+		  margin-top: 20px;
+		  position: relative;
+		  
+		  width: 400px;
+		  height: 50px;
+		  background-color: #ccc;
+		  border: 1px solid #aaa;
+		}
+		.bar:after {
+		  position: absolute;
+		  z-index: -2;
+		  top: -12px;
+		  left: 185px;
+		  content: '';
+		  padding: 5px;
+		  display: block;
+		  width: 50px;
+		  height: 50px;
+		  border: 1px solid #aaa;
+		  border-radius: 50%;
+		  background-color: #ccc;
+		}
+
+
+		.test {
+		  position: absolute;
+		  top: 80px;
+		  left: 25px;
+		  content: '';
+		  padding: 5px;
+		  width: 60px;
+		  height: 60px;
+		  border: 1px solid #aaa;
+		  border-radius: 50%;
+		  background-color: red;
+		}
+		.test:after {
+		  position: absolute;
+		  z-index: -1;
+		  top: -5px;
+		  left: -15px;
+		  content: '';
+		  padding: 5px;
+
+		  width: 60px;
+		  height: 60px;
+		  border: 1px solid #aaa;
+		  border-radius: 50%;
+		  background-color: green;
+		}
+
+
+	</style>
+</head>
+<body>
+	<span class="cir">记</span>
+	<span class="drop"></span>
+	<div class="bar"></div>
+
+
+	<div class="test"></div>
+</body>
+</html>
